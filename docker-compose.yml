@@ -1,0 +1,20 @@
+version: '2.0'
+
+services:
+  mysql:
+    image: mysql:latest
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: 'root'
+    ports:
+      - '33060:3306'
+    volumes:
+      - ./data:/var/lib/mysql
+      - ./conf:/etc/mysql/conf.d
+    networks:
+      - 'database'
+
+networks:
+  database:
+    external: true
+
